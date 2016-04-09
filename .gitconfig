@@ -1,0 +1,10 @@
+[user]
+        name = mnespor
+        email = 
+[alias]
+        copyhash = "!f() { git log | grep -E -o -m 1 '[a-z0-9]{40}' | tr -d '\\r\\n' | pbcopy; }; f"
+        whatthecommit = 'git commit -a -m \"`curl -s http://whatthecommit.com/index.txt`\"'
+	up = "!git remote update -p; git merge --ff-only @{u}"
+	sup = "!git submodule update --init --recursive"
+[core]
+        excludesfile = /Users/mnespor/.gitignore_global
