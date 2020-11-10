@@ -10,8 +10,9 @@
 	statsu = status
 	sup = "!git submodule update --init --recursive;"
 	what = "!git commit -a -m \"$(curl -L http://whatthecommit.com/index.txt)\""
-	delete-merged-branches = "!f() { git checkout --quiet master && git branch --merged | grep --invert-match '\\*' | xargs -n 1 git branch --delete; git checkout --quiet @{-1}; }; f"
-  pr = "!f() { makepr; }; f"
+	delete-merged-branches = "!f() { git branch --format='%(refname:lstrip=2)' --merged | grep '/' | xargs -n 1 git branch --delete; }; f"
+	hot = "!f() { git log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -10; }; f"
+	missing-from = "!f() { git log --no-merges \"$1\" ^HEAD; }; f"
 [core]
 	excludesfile = /Users/mnespor/.gitignore_global
 [credential]
